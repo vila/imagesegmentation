@@ -54,6 +54,7 @@ for iter = 1:max_iter
 
     % for debug output
     if show_iterations
+        figure(1);
         % find the perimiter of {u > 0.5}
         imagesc(draw_perimeter(f, u > 0.5));
         title(['f with \partial\{u > 0.5\}' ...
