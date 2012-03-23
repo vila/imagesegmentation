@@ -32,7 +32,7 @@ r1 = @(c1,c2) (c1 - f).^2 - (c2 - f).^2;
 
 for iter = 1:max_iter
     % we solve the problem
-    % min_v TV_g(u) + (1/2\theta)*||u - v||^2
+    % min_u TV_g(u) + (1/2\theta)*||u - v||^2
     % using chambolles algorithm   
     [u, c_iter] = chambolle(v, theta, 100, g);
         
