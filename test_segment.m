@@ -1,8 +1,8 @@
 clear;
 
 % Load the image
-%im = imread('cameraman.jpg');
-im = imread('banana.jpg');
+im = imread('cameraman.jpg');
+%im = imread('banana.jpg');
 
 % Make sure the image is grayscale in [0,1]
 if size(im,3) > 1
@@ -12,10 +12,10 @@ else
     im = double(im)/255;
 end
 
-c1 = 0.9;
-c2 = 1;
+c1 = 0;
+c2 = 0.6;
 
-lambda = 10;
+lambda = 0.5;
 theta = 1;
 beta = 10;
 
