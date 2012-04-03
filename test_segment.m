@@ -25,7 +25,7 @@ theta = 1;
 beta = 10;
 
 % perform the image segmentation
-C = segment(im, c1, c2, lambda, theta, beta, 1, 50);
+C = segment(im, c1, c2, lambda, theta, beta, 1, 100);
 
 % show the result
 imagesc(draw_perimeter(im, C));
