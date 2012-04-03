@@ -21,7 +21,7 @@ c2 = 0.6;
 
 lambda = 0.1;
 theta = 1;
-beta = 10;
+beta = 0; % no edge info
 
 M(30) =  struct('cdata',[],'colormap',[]);
 fig = figure;
@@ -46,4 +46,4 @@ for k = 1:40
     M(k) = getframe(fig);
 end
 
-movie2gif(M, {M(1:end).cdata}, ['segment2_test.gif'], 'loopcount', Inf, 'delaytime', 0.5)
+movie2gif(M, {M(1:end).cdata}, ['./output/segment2_no_edge.gif'], 'loopcount', Inf, 'delaytime', 0.5)

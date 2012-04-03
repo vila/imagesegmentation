@@ -22,7 +22,7 @@ function [ C, c1, c2, iter ] = segment2( f, c1, c2, lambda, theta, beta, show_it
 % c1, c2    - the final gray levels
 % iter      - number of iterations
 
-if nargin < 9; epsilon = 1e-23; end
+if nargin < 9; epsilon = 1e-3; end
 if nargin < 8; max_iter = 100; end
 if nargin < 7; show_iterations = 1; end
 
