@@ -1,5 +1,5 @@
 This was done for the project course in Applied Mathemathics (FMA023) at LTH.
-The final report can be found here [final.pdf](http://github.com/vila/imagesegmentation/blob/master/final.pdf)
+The final report can be found here [final.pdf](https://github.com/downloads/vila/imagesegmentation/final.pdf)
 
 
 References
