@@ -7,7 +7,8 @@ function [u, iter, max_diff] = chambolle(g, theta, max_iter, w, tau, epsilon, st
 % tau       - determines step length (default: 1/4)
 % epsilon	- for the stopping critereon (default: 1/100)
 % stop_crit	- stopping criterion, available options are
-%             'p'       => largest difference in p
+%             'p'       => largest elementwise difference in p
+%             'np'      => largest 2-norm of (p^n_ij - p^n+1_ij)
 %             'divp'    => largest difference in div(p)
 %            The default is 'p'
 % Output:
@@ -21,7 +22,7 @@ function [u, iter, max_diff] = chambolle(g, theta, max_iter, w, tau, epsilon, st
 
 if nargin < 7; stop_crit = 'p';     end
 if nargin < 6; epsilon = 1/100;     end
-if nargin < 5; tau = 1/4;           end
+if nargin < 5; tau = 1/8;           end
 if nargin < 4; w = ones(size(g));   end
 
 p = zeros([size(g) 2]);
@@ -40,8 +41,9 @@ for iter = 1:max_iter
     new_p = (p + tau*d) ./ (1 + tau * nd);
     
     % Stopping criterions
-    if strcmp(stop_crit, 'p');      diff = new_p - p;           end;
-    if strcmp(stop_crit, 'divp');   diff = div(new_p) - div(p); end;
+    if strcmp(stop_crit, 'p');    diff = new_p - p;               end;
+    if strcmp(stop_crit, 'np');   diff = sqrt(sum((new_p - p).^2,3)); end
+    if strcmp(stop_crit, 'divp'); diff = div(new_p) - div(p);     end;
     max_diff(iter) = max(abs(diff(:)));
     
     if max_diff(iter) < epsilon
