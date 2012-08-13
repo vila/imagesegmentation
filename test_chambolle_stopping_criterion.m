@@ -24,12 +24,13 @@ diff_plot = figure;
 for k = 1:6
 theta = 10.^(k-4);
 [im_p, iter_p, diff_p] = chambolle(im, theta, max_iter, w, tau, epsilon, 'p');
+[im_np, iter_np, diff_np] = chambolle(im, theta, max_iter, w, tau, epsilon, 'np');
 [im_divp, iter_divp, diff_divp] = chambolle(im, theta, max_iter, w, tau, epsilon, 'divp');
 
 figure(diff_plot);
 subplot(3,2,k)
-semilogy(1:iter_p, diff_p, 'r-', 1:iter_divp, diff_divp, 'b-');
-legend('||p_{n+1} - p_{n}||_\infty', '||div(p_{n+1}) - div(p_{n})||_\infty') 
+semilogy(1:iter_p, diff_p, 'r-', 1:iter_divp, diff_divp, 'b-',1:iter_np, diff_np, 'g--');
+legend('||p_{n+1} - p_{n}||_{\infty,\infty}', '||div(p_{n+1}) - div(p_{n})||_\infty', '||p_{n+1} - p_{n}||_{\infty,2}') 
 title(['\theta = ' num2str(theta)]);
 end
 

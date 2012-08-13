@@ -1,7 +1,8 @@
 clear;
 
 % Load the image
-im = imread('cameraman.jpg');
+im = imread('sund.jpg');
+%im = imread('cameraman.jpg');
 %im = imread('banana.jpg');
 
 % Make sure the image is grayscale in [0,1]
@@ -20,7 +21,7 @@ end
 c1 = 0;
 c2 = 0.6;
 
-lambda = 0.5;
+lambda = 1;
 theta = 1;
 beta = 10;
 
