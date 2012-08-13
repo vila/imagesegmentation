@@ -11,7 +11,7 @@ function [ C, c1, c2, iter ] = segment2( f, c1, c2, lambda, theta, beta, show_it
 % c1 - initial grayscale level for the foreground
 % c2 - initial grayscale level for the background
 % lambda - weight for data term (large lambda => high cost for missmatch)
-% theta - 
+% theta - should be 1
 % beta      - the edge indicator function is constructed as
 %               g = 1 / (1 + beta*||grad(f)||^2)
 % show_iterations - if the intermediate results should be plotted each iteration
@@ -40,14 +40,14 @@ for iter = 1:max_iter
     % we solve the problem
     % min_u TV_g(w) + (1/2\theta)*||w - (-lambda*r1)||^2
     % using chambolles algorithm   
-    [w, c_iter] = chambolle(-lambda*r1(c1,c2), theta, 100, g);
+    [w, c_iter] = chambolle(-lambda*r1(c1,c2), theta, 5000, g, 1/4, 1e-3);
     
     fprintf('c_iter = %d\n', c_iter);
     
     % the solution to
     % min_u TV_g(u) - <(-lambda*r1), u>
     % is then given by thresholding w around zero
-    u = w > 0;
+    u = w >= 0;
     
     % we update c1 and c2
     m1 = mean(f(u));

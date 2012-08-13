@@ -49,7 +49,7 @@ for iter = 1:max_iter
     % we solve the problem
     % min_u TV_g(u) + (1/2\theta)*||u - v||^2
     % using chambolles algorithm   
-    [u, c_iter] = chambolle(v, theta, 100, g);
+    [u, c_iter] = chambolle(v, theta, 500, g, 1/4, 1e-2);
         
     % we solve the problem
     % min_v (1/2\theta)*||u - v||^2 + \int(\lambda * r1(c1,c2) * v)
